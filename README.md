@@ -5,45 +5,6 @@ ME5418 Project
 This section implements a RL agent based on the PPO2 algorithm. 
 The goals of this project are to train a fruit-picking robot by PPO2 algorithm to learn how to perform effective picking operations in a three-dimensional discrete space and to show a rendered video of the robot executing the policy.
 
-## File Structure
-├── A* &nbsp;&nbsp;&nbsp;&nbsp;  
-│   └── A_star_gym.py &nbsp;&nbsp;&nbsp;&nbsp; # A* environment  
-│   └── A_star.py &nbsp;&nbsp;&nbsp;&nbsp; # A* function  
-│   └── A_star_agent.py &nbsp;&nbsp;&nbsp;&nbsp; # A* implementation  
-├── PPO2 &nbsp;&nbsp;&nbsp;&nbsp;   
-│   └── our_gym.py &nbsp;&nbsp;&nbsp;&nbsp; # Our project environment  
-│   └── PPO2Network.py &nbsp;&nbsp;&nbsp;&nbsp; # Defines the PPO2Network neural network architecture   
-│   └── PPO2Agent.py &nbsp;&nbsp;&nbsp;&nbsp; # Defines the PPO2Agent actor and critic architecture with ppo2train and ppo2test processes  
-├── PPO2_easy &nbsp;&nbsp;&nbsp;&nbsp;   
-│   └── our_gym_easy.py &nbsp;&nbsp;&nbsp;&nbsp; # Our project environment simplified for testing  
-│   └── PPO2Network.py &nbsp;&nbsp;&nbsp;&nbsp; # the same file as above (in PPO2 part)  
-│   └── PPO2Agent_easy.py &nbsp;&nbsp;&nbsp;&nbsp; # Defines the PPO2Agent actor and critic architecture with ppo2train and ppo2test processes simplified for testing  
-├── Models &nbsp;&nbsp;&nbsp;&nbsp; # Our urdf files of models  
-│   └── fruit_red.urdf &nbsp;&nbsp;&nbsp;&nbsp; # Model of ripe fruit  
-│   └── fruit_yellow.urdf &nbsp;&nbsp;&nbsp;&nbsp; # Model of immature fruit  
-│   └── plane100.urdf &nbsp;&nbsp;&nbsp;&nbsp; # Model of ground  
-│   └── plane100.obj &nbsp;&nbsp;&nbsp;&nbsp; # Model of ground (obj)  
-│   └── robot.urdf &nbsp;&nbsp;&nbsp;&nbsp; # Model of robot  
-│   └── tree.urdf &nbsp;&nbsp;&nbsp;&nbsp; # Model of tree  
-│   └── robot_astar.urdf &nbsp;&nbsp;&nbsp;&nbsp; # Model of robot for A*  
-├── PPO2_Models &nbsp;&nbsp;&nbsp;&nbsp; # Store actor.pth and critic.pth files  
-│   └── PPO2_model_actor.pth &nbsp;&nbsp;&nbsp;&nbsp; # Stores the weight of actor network in PPO2Agent  
-│   └── PPO2_model_critic.pth &nbsp;&nbsp;&nbsp;&nbsp; # Stores the weight of critic network in PPO2Agent  
-│   └── PPO2_model_actor_easy.pth &nbsp;&nbsp;&nbsp;&nbsp; # Stores the weight of actor network in PPO2Agent_easy  
-│   └── PPO2_model_critic_easy.pth &nbsp;&nbsp;&nbsp;&nbsp; # Stores the weight of actor network in PPO2Agent_easy  
-├── runs\PPO2_training &nbsp;&nbsp;&nbsp;&nbsp; # The output file from TensorBoard(runs\PPO2_training) is a directory that contains event files, which store logged data in a format TensorBoard can read.   
-│   └── events.out.tfevents.1732253638.LAPTOP-4LU1HCLC &nbsp;&nbsp;&nbsp;&nbsp; # events file of PPO2 for loss and reward diagrams, which can be read by TensorBoard  
-│   └── events.out.tfevents.1732252202.sunnny &nbsp;&nbsp;&nbsp;&nbsp; # events file of PPO2_easy for loss and reward diagrams, which can be read by TensorBoard   
-├── Videos &nbsp;&nbsp;&nbsp;&nbsp; # Render and simulate visual videos  
-│   └── Video_PPO2.mp4 &nbsp;&nbsp;&nbsp;&nbsp; # PPO2 rendering video  
-│   └── Video_A_star.mp4 &nbsp;&nbsp;&nbsp;&nbsp; # A* rendering video  
-│   └── Video_PPO2_easy.mp4 &nbsp;&nbsp;&nbsp;&nbsp; # PPO2_easy rendering video  
-├── environment.hml &nbsp;&nbsp;&nbsp;&nbsp; # Conda dependencies file    
-├── Group07_Final_Reports &nbsp;&nbsp;&nbsp;&nbsp; # Report file  
-│   └── SUNYINING_A0310458J_Report.pdf &nbsp;&nbsp;&nbsp;&nbsp; # SUN YINING Report file  
-│   └── GAOYILIN_A0303608L_Report.pdf &nbsp;&nbsp;&nbsp;&nbsp; # GAO YILIN Report file  
-│   └── LINHAOYU_A0304971A_Report.pdf &nbsp;&nbsp;&nbsp;&nbsp; # LIN HAOYU Report file  
-└── README.md &nbsp;&nbsp;&nbsp;&nbsp; # Project documentation  
 
 ## Dependencies
 Ensure the following dependencies are installed to run the code:
