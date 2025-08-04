@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot name="fruit_red">
+
+  <!-- sphere -->
+  <link name="fruit">
+    <visual>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>  <!-- Positioned bottom at z=0, center at z=3 -->
+      <geometry>
+        <sphere radius="0.375"/> <!-- radius 0.5 sphere -->
+      </geometry>
+      <material name="fruit">
+        <color rgba="0.87 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  </robot>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot name="tree10">
+
+  <!-- Long rectangular prism -->
+  <link name="trunk">
+    <visual>
+      <origin xyz="0 0 3.5" rpy="0 0 0"/>  <!-- Positioned so bottom at z=0, center at z=3 -->
+      <geometry>
+        <box size="1 1 7"/> <!-- 1x1x6 rectangular prism -->
+      </geometry>
+      <material name="leaves">
+        <color rgba="0.54 0.27 0.07 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Cube -->
+  <link name="crown">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/> <!-- Positioned so bottom at z=6, center at z=8.5 -->
+      <geometry>
+        <box size="5 5 5"/> <!-- 5x5x5 cube -->
+      </geometry>
+      <material name="trunk">
+        <color rgba="0.56 0.93 0.56 0.5"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Fixed joint connecting cube and prism -->
+  <joint name="fixed_joint" type="fixed">
+    <parent link="trunk"/>
+    <child link="crown"/>
+    <origin xyz="0 0 6.5" rpy="0 0 0"/> <!-- Connects at top of prism (z=6) to bottom of cube -->
+  </joint>
+
+</robot>

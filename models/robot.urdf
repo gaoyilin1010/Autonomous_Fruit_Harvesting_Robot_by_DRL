@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<robot name="robot">
+
+  <!-- base_link -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.3 0.2"/>
+      </geometry>
+      <material name="darkgray">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+    </visual>
+  </link>
+
+
+  <!-- 左侧轮子 -->
+  <link name="left_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="left_wheel_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_wheel"/>
+    <origin xyz="0 -0.15 0.05" rpy="1.57075 0 0"/>
+    <axis xyz="0 0 -1"/> <!-- 绕Z轴旋转 -->
+  </joint>
+
+  <!-- left_box -->
+  <link name="left_box">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1 0.4 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 固定 joint 竖杆固定在 left_box 上 -->
+  <joint name="left_box_fixed_joint" type="fixed">
+    <parent link="left_wheel"/>
+    <child link="left_box"/>
+    <origin xyz="0 0 0.03" rpy="0 0 0"/>
+  </joint>
+
+
+
+
+
+
+  <!-- 右侧轮子 -->
+  <link name="right_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="right_wheel_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_wheel"/>
+    <origin xyz="0 0.15 0.05" rpy="1.57075 0 0"/>
+    <axis xyz="0 0 -1"/> <!-- 绕Z轴旋转 -->
+  </joint>
+
+  <!-- right_box -->
+  <link name="right_box">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1 0.4 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 固定 joint 竖杆固定在 right_box 上 -->
+  <joint name="right_box_fixed_joint" type="fixed">
+    <parent link="right_wheel"/>
+    <child link="right_box"/>
+    <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+  </joint>
+
+
+
+
+
+
+
+
+
+  <!-- vertical_link (固定竖杆，不再移动) -->
+  <link name="vertical_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.04" length="0.2"/>
+      </geometry>
+      <material name="light gray">
+        <color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 固定 joint 竖杆固定在 base_link 上 -->
+  <joint name="vertical_link_fixed_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="vertical_link"/>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+  </joint>
+
+  <!-- vertical_extension 用于前后伸缩的额外链接 -->
+  <link name="vertical_extension">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.4"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- vertical_link 前后伸缩的 joint (沿Z轴) -->
+  <joint name="vertical_extend_joint" type="prismatic">
+    <parent link="vertical_link"/>
+    <child link="vertical_extension"/>
+    <origin xyz="0 0 -0.1" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/> <!-- 沿Z轴前后伸缩 -->
+    <limit lower="0.0" upper="0.4" effort="50.0" velocity="1.0"/>
+  </joint>
+
+  <!-- connect_link -->
+  <link name="connect_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="lightgray">
+        <color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 固定 joint 竖杆固定在 vertical_link 上 -->
+  <joint name="connect_link_fixed_joint" type="fixed">
+    <parent link="vertical_extension"/>
+    <child link="connect_link"/>
+    <origin xyz="0 0 0.25" rpy="0 0 0"/>
+  </joint>
+
+  <!-- horizontal_link -->
+  <link name="horizontal_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.1"/>
+      </geometry>
+      <material name="lightgray">
+        <color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 固定 joint 竖杆固定在 vertical_link 上 -->
+  <joint name="horizontal_link_fixed_joint" type="fixed">
+    <parent link="connect_link"/>
+    <child link="horizontal_link"/>
+    <origin xyz="0.1 0 0" rpy="0 1.57075 0"/>
+  </joint>
+
+
+
+</robot>
+
+
+
