@@ -1,5 +1,5 @@
 # Autonomous_Fruit_Harvesting_Robot_by_DRL
-ME5418 Project
+NUS ME5418 Project 24/25fall
 
 ## Overview
 This section implements a RL agent based on the PPO2 algorithm. 
